@@ -33,6 +33,12 @@ header{
     /* position:fixed; */
     margin: 0px;
 }
+input:hover{
+  border: 1px solid var(--main-pink);
+}
+label:hover{
+  border: 1px solid var(--main-pink);
+}
 
 @font-face {
   font-family: 'Poppins-Regular';

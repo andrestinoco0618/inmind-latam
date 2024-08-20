@@ -58,10 +58,11 @@ const PsychologicalForm: React.FC = () => {
             {currentQuestionIndex > 0 && questions[currentQuestionIndex - 1]}
           </div>
           <div className={styles['container__button-next']}>
+            <span><i>Presione <strong>ENTER</strong></i></span>
             <button className={styles.button__next} onClick={handleNextClick}><strong>{BUTTON_NEXT}</strong></button>
           </div>
         </div>
-      </div>
+      
       <div className={styles.container__load}>
         <div className={styles['container__progress-bar']}>
           <div className={styles.progress__text}>
@@ -87,6 +88,7 @@ const PsychologicalForm: React.FC = () => {
             </div>
           </div>
         </div>
+      </div>
       </div>
     </>
   );
