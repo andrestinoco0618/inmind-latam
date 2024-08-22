@@ -1,8 +1,7 @@
 .container__form{
-    background-image: url('../../../public/img/banner-home-1.png');
-    background-position: bottom center;
-    height: 508px;
-    overflow: hidden;
+   /*  background-image: url('../../../public/img/banner-home-1.png');
+    background-position: bottom center; */
+    height: auto;
     display: flex;
     justify-content: center;
 }
@@ -10,9 +9,8 @@
     padding: 30px;
     /* background-color: bisque; */
     width: 100%;
-    height: 488px;
-    overflow: auto;
-    margin-bottom:88px;
+    height: auto;
+    /* margin-bottom:88px; */
 }
 .container__icon--size{
     width: 20px;
@@ -81,22 +79,13 @@
 .container__load{
     height: 53.05px;
     display: flex;
-    padding-left: 12.6px;
     gap:11px;
     background: transparent;
-    position: absolute;
-    bottom: 20%;
+    /* position: absolute;
+    bottom: 20%; */
     width: 100%;
     justify-content: center;
-}
-.container__progress-bar{
-    width: 75%;  
-}
-.progress__text{
-padding: 5px;
-font-size: 11.5px;
-font-family: 'Poppins-Regular',sans-serif;
-color:var(--main-pink);
+    margin-top: 20px;
 }
 
 .container__arrow{
@@ -153,21 +142,11 @@ color:var(--main-pink);
     position: relative;
     overflow: hidden;
 }
-.progress__fill {
-    content: '';
-    display: block;
-    height: 100%;
-    background-color: var(--main-pink);
-    width: 0; 
-    position: absolute;
-    top: 0;
-    left: 0;
-    transition: width 0.3s ease; 
-}
+
 @media screen and (min-width: 767px) {
     .container__form-info{
         max-width: 720px;
-        height: 400px;
+        height: auto;
     }
     .container__progress-bar{
         width: 15%;  

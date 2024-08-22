@@ -1,0 +1,26 @@
+.select-question__title{
+    font-size: 17px;
+    font-weight: bold;
+}
+
+.select-question__subtitle{
+    font-style: italic;
+}
+.select-question__choices{
+    height: 50px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+.select-question__choices select{
+    width: 100%;
+    height: 80%;
+    border-radius: 19px;
+    cursor: pointer;
+    padding: 5px;
+}
+.select-question__choices select:hover{
+    border: 2px solid var(--main-pink);
+}
