@@ -1,0 +1,32 @@
+.mandatory-alert__principal{
+    position: absolute;
+    margin-top: 15px;
+}
+.mandatory-alert__container{
+    background-color: var(--alerts);
+    height: 30px;
+    width: 170px;
+    padding:4px;
+    border-radius: 4px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.mandatory-alert__container--text{
+    font-size: 14px;
+    font-family: 'Poppins-Regular', Sans-serif;
+    color:var(--text-alerts);
+}
+.mandatory-alert__principal--arrow {
+    background-color: var(--alerts);
+    display: inline-block;
+    width: 14.1px;
+    height: 14.1px;
+    border-radius: 3px;
+    transform: rotate(45deg);
+    z-index: -1;
+    top: -5px;
+    left: 42px;
+    position: absolute;
+}

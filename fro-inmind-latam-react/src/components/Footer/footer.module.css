@@ -1,0 +1,9 @@
+.container__footer--first{
+    background-image: url('../../../public/img/banner-home-1.png');
+    background-position: bottom center;
+    height: 100%;
+}
+.container__footer--second{
+    background-image: url('../../../public/img/banner-home-2.png');
+    height: 100%;
+}

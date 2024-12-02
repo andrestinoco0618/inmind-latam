@@ -1,0 +1,32 @@
+services:
+  app:
+    image: back-inmind-latam:latest
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      SPRING_APP_NAME: ${SPRING_APP_NAME}
+      SPRING_DATASOURCE_URL: ${DB_URL}  # Elimina si no vas a usar base de datos
+      SPRING_DATASOURCE_USERNAME: ${DB_USERNAME}  # Elimina si no vas a usar base de datos
+      SPRING_DATASOURCE_PASSWORD: ${DB_PASSWORD}  # Elimina si no vas a usar base de datos
+      SPRING_JPA_HIBERNATE_DDL_AUTO: ${DDL_AUTO}  # Elimina si no vas a usar base de datos
+      SERVER_PORT: ${SERVER_PORT}
+      SPRING_REDIS_HOST: ${REDIS_HOST}
+      SPRING_REDIS_PORT: ${REDIS_PORT}
+    ports:
+      - "${SERVER_PORT}:${SERVER_PORT}"
+    depends_on:
+      - redis-server  # Solo necesitas el servicio redis
+    networks:
+      - app_network  # Definir la red para la conectividad entre contenedores
+
+  redis-server:
+    image: redis/redis-stack-server:latest
+    ports:
+      - "6379:6379"
+    networks:
+      - app_network  # Aseguramos que Redis esté en la misma red que la app
+
+networks:
+  app_network:
+    driver: bridge

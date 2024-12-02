@@ -1,0 +1,219 @@
+.header {
+    width: 100%;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    top: 0px;
+    border-style: solid;
+    border-width: 0px 0px 1px 0px;
+    border-color: var(--border-color);
+    transition: background 0.3s, border 0.3s, border-radius 0.3s, box-shadow 0.3s;
+    z-index: 1000;
+}
+
+.header__container {
+    display: flex;
+    margin-right: auto;
+    margin-left: auto;
+    padding: 20px;
+    margin-bottom: 10px;
+    max-width: 1029px;
+}
+
+.header__container-logo {
+    width: 50%;
+    padding: 5px   
+}
+
+.container-logo__img {
+    width: 100%;
+    max-width: 200px; 
+    height: auto;
+    transition: max-width 0.3s ease;
+}
+
+.header__container-navmenu {
+    display: flex;
+    width: 50%;
+    padding: 5px;
+}
+
+.nav__bar {
+    display: flex;
+    margin-left: auto;
+    align-items: center;
+}
+
+.nav-menu__icon {
+    margin-left: auto;
+    height: 45px;
+    width: 44.75px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.nav-menu__icon--styles {
+    color: var(--main-blue);
+    cursor: pointer;
+    padding: 7.5px;
+    margin-top: -3px;
+    height: 30.4px;
+    width: 29.74px;
+}
+
+.nav__menu {
+    position: absolute;
+    top: 91px;
+    left: 0px;
+    width: 100%;
+    height: 160px;
+    z-index: 9997;
+    background-color: var(--gray-menu);
+    padding: 0px;
+    max-height: 160px;
+}
+
+.nav__menu li {
+    height: 20px;
+    width: 100%;
+    list-style: none;
+    padding: 10px 20px;
+    font-size: 13px;
+    font-family: 'Poppins-Regular', Sans-serif;
+    font-weight: 400;
+    color: var(--main-blue);
+    cursor: pointer;
+    box-sizing: initial;
+}
+.nav__menu li:hover{
+    color:var(--main-pink);
+    background-color: #ededed;
+}
+/* .nav__menu li a:hover::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -2px;
+    width: 100%;
+    height: 2px; 
+    background-color: var(--main-pink); 
+    transform: scaleX(1);
+    transition: transform 0.3s ease-in-out;
+  } */
+  .nav__menu li a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -2px;
+    width: 100%;
+    height: 2px;
+    background-color: var(--main-pink);;
+    transform: scaleX(0);
+    transition: transform 0.3s ease-in-out;
+  }
+.nav__menu>li>a {
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    color: inherit;
+    text-decoration: none;
+}
+
+.nav__menu-open {
+    max-height: 160px;
+    transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out;
+}
+
+.nav__menu-close {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out;
+}
+.header__container-media{
+    padding: 5px;
+    display: none;
+}
+@media screen and (min-width: 769px) {
+    .header__container-logo {
+        width: 30%;
+        padding: 5px       }
+    .container__nav-menu {
+        width: 40%;
+    }
+    .header__container-media{
+        width: 40%;
+        display:flex;
+        justify-content: right;
+    }
+    
+}
+.container-media__icons{
+    display: flex;
+    align-items: center;
+    gap:7px;
+}
+.container-media__icons span{
+    width: 36.4px;
+    height: 36.4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+}
+.container-media__icons--purple{
+    background-color: var(--main-blue);
+}
+.container-media__icons--pink{
+    background-color: var(--main-pink);
+}
+.container-media__icons--blue{
+    background-color: var(--secondary-blue);
+}
+.container-media__icons--white{
+    color: var(--white);
+}
+
+@media screen and (min-width: 1025px) {
+    .nav-menu__icon {
+        display: none;
+    }
+
+    .nav__menu {
+        position: static;
+        display: flex;
+        align-items: center;
+        height: auto;
+        background-color: transparent;
+        max-height: none;
+        text-align: center;
+    }
+
+    .nav__menu li {
+        padding: 0 15px;
+        height: auto;
+    }
+    .nav__menu li:hover{
+        background-color: transparent;
+    }
+
+    .header__container-navmenu {
+        width: 47.674%;
+    }
+
+    .header__container {
+        justify-content: space-between;
+    }
+    .nav__menu li {
+        
+        font-size: 19px;
+    }
+    .header__container-media{
+        width:22.863%
+    }
+    .header__container-logo {
+        width: 28.765%;
+        padding: 5px   
+    }
+    .nav__bar{
+        margin: 0;
+        width: 100%;
+    }
+}

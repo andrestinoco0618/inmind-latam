@@ -1,0 +1,55 @@
+@import 'normalize.css';
+
+:root{
+    /*Brand colors - Primary*/
+    --main-pink:#FA007f;
+    --main-blue:#5D56FC;
+    --alerts:#ffc0c0;
+    --text-alerts:#9f0b05;
+
+    /*Brand colors - Secondary*/
+    --secondary-blue:#0077b5;
+    --border-color:#d3d3d3;
+    --gray-menu:#f2f2f2;
+    --white: #FFFF; 
+    --gray-bars:#e2e2e2;
+    --dark-blue:#243447;
+
+    /*Breakpoints*/
+    --mobile: 360px
+    --tablet: 767px;
+    --small-desktop: 1024px;
+    --desktop:1440px;
+    --big-desktop:1920px;
+}
+*,:after,:before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+main {
+  position: relative; 
+  z-index: 1;
+}
+header{
+    /* position:fixed; */
+    margin: 0px;
+}
+input:hover{
+  border: 1px solid var(--main-pink);
+}
+label:hover{
+  border: 1px solid var(--main-pink);
+}
+
+@font-face {
+  font-family: 'Poppins-Regular';
+  src: url('/fonts/Poppins-Regular.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Poppins-Bold';
+  src: url('/fonts/Poppins-Bold.ttf') format('truetype');
+}
+/* main{
+  padding:5px;
+} */
