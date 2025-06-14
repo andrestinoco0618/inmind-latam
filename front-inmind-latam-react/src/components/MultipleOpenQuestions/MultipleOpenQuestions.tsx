@@ -2,6 +2,15 @@
 import React, { useState, useRef, useEffect } from "react";
 import styles from "./multipleOpenQuestions.module.css";
 
+/**
+ * @interface MultipleOpenQuestionProps
+ * @description Props for the MultipleOpenQuestion component
+ * @property {string} title - Question title
+ * @property {string} subtitle - Question subtitle
+ * @property {number} questionNumber - Question number in sequence
+ * @property {Option[]} optionsAnswer - Available answer options
+ * @property {Function} onAnswerChange - Callback for answer changes with selected options and text response
+ */
 interface MultipleOpenQuestionProps {
   title: string;
   subtitle: string;
@@ -15,6 +24,12 @@ interface Option {
   text: string;
 }
 
+/**
+ * @component MultipleOpenQuestion
+ * @description Renders a question with multiple open-ended text inputs
+ * @param {MultipleOpenQuestionProps} props - Component props
+ * @returns {JSX.Element} Rendered multiple open question component
+ */
 const MultipleOpenQuestion = ({
   title,
   subtitle,
@@ -26,23 +41,28 @@ const MultipleOpenQuestion = ({
   const [text, setText] = useState("");
   const [showTextarea, setShowTextarea] = useState(false);
 
+   useEffect(() => {
+    setShowTextarea(false);
+    setText("");
+    setSelectedOptions([]);
+   }, [questionNumber]);
+
   const OpenQuestionsOptions = [
     "A00052", "A00094", "A00101", "A00165", "A00184", "A00336", 
     "A00444", "A00460", "A00483", "A00498", "A00505", "A00592", 
     "A00745", "A00753", "A00765", "A00772", "A00779", "A00884", 
     "A00894", "A00900", "A00903", "A00945", "A00967", "A01006", 
-    "A01042", "A01063", "A01103", "A01142"
+    "A01042", "A01063", "A01103", "A01142", "A00573", "A01162"
   ];
   const textareaRef = useRef<HTMLDivElement>(null);
 
-  const handleChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
-    setText(event.target.value);
-    onAnswerChange(selectedOptions, text);
-  };
+const handleChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
+  const newText = event.target.value;
+  setText(newText);
+  onAnswerChange(selectedOptions, newText); 
+};
 
   const handleCheckboxChange = (optionId: string) => {
-    console.log(process.env.NEXT_PUBLIC_OPTIONS_OPEN);
-  
     if (OpenQuestionsOptions.includes(optionId)) {
       if (selectedOptions.includes(optionId)) {
         setSelectedOptions([]);
@@ -52,23 +72,20 @@ const MultipleOpenQuestion = ({
         setSelectedOptions([optionId]);
         setShowTextarea(true);
       }
-    } else {
-      const updatedOptions = selectedOptions.includes(optionId)
-        ? selectedOptions.filter((id) => id !== optionId) 
-        : [
-            ...selectedOptions.filter((id) => !OpenQuestionsOptions.includes(id)),
-            optionId,
-          ];
-      setText("");
-      setSelectedOptions(updatedOptions);
-      setShowTextarea(false);
-    }
+    }else {
+      setSelectedOptions((prevSelected) => {
+        const newSelection = prevSelected.includes(optionId)
+          ? prevSelected.filter((id) => id !== optionId)
+          : [...prevSelected.filter((id) => !OpenQuestionsOptions.includes(id)), optionId];
   
-    onAnswerChange(selectedOptions, text);
+        setShowTextarea(false);
+        setText(""); 
+        onAnswerChange(newSelection, ""); 
+        return newSelection;
+      });
+    }
   };
   
-  
-
 
   useEffect(() => {
     if (showTextarea && textareaRef.current) {
@@ -120,6 +137,7 @@ const MultipleOpenQuestion = ({
                 rows={4}
                 cols={50}
                 onChange={handleChange}
+                role="textbox"
               ></textarea>
             </div>
           )}

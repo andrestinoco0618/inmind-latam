@@ -56,3 +56,15 @@
     color: var(--dark-blue);
     font-size: 16px;
 }
+.disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.disabled input {
+  pointer-events: none;
+}
+
+.disabled p {
+  color: #999;
+}

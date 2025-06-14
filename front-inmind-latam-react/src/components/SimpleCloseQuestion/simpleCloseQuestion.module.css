@@ -26,7 +26,6 @@
 .close-question__options--style {
     border: 1px solid var(--dark-blue);
     padding: 14px 12px;
-    height: 50px;
     border-radius: 14px;
     display: flex;
     align-items: center;

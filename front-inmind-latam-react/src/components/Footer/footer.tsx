@@ -1,5 +1,10 @@
 import styles from './footer.module.css';
 
+/**
+ * @component Footer
+ * @description Displays the application footer with two sections
+ * @returns {JSX.Element} Rendered footer component
+ */
 const Footer = () => {
   return (
     <>

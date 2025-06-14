@@ -1,3 +1,4 @@
+
 .container__form{
    /*  background-image: url('../../../public/img/banner-home-1.png');
     background-position: bottom center; */
@@ -35,7 +36,8 @@
 }
 .container__text{
     margin-top:26px;
-    font-size: 14px;
+    font-size: 17px;
+    line-height: 25px;
     color: var(--main-pink);
     font-family: 'Poppins-Regular', sans-serif;
     max-width: 100%;
@@ -76,6 +78,42 @@
 .button__next:hover {
     background-color: rgb(255, 33.154399999999995, 160.1544)!important;
 }
+.section__buttons{
+    width:80%;
+    margin: auto;
+    padding:7%
+  }
+  .section__buttons h1{
+    color:var(--main-pink);
+    text-align: center;
+    font-family: 'Poppins-Regular',sans-serif;
+  }
+  .section__buttons h2{
+    color: black;
+    text-align: center;
+    font-family: 'Poppins-Regular',sans-serif;
+  }
+  .section__buttons--next {
+    margin-top: 11%;
+    display: flex;  
+    gap: 3%;
+    justify-content: center;
+  }
+  .section__buttons--next button{
+     font-size: 14px;
+     font-family: 'Poppins-Regular',sans-serif;
+     color:var(--white);
+     width: 140px;
+     border:none;
+     border-radius: 5px;
+     height: 46px;
+     background-color: var(--main-pink);
+     cursor:pointer;
+     box-shadow: 4px 4px 10px 3px rgba(0, 0, 0, .78);
+  }
+  .section__buttons--next button:hover {
+     background-color: rgb(255, 33.154399999999995, 160.1544)!important;
+  }
 .container__button-final{
     width: 100%;
     height: auto;

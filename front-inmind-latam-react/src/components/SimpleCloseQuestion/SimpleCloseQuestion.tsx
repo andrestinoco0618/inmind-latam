@@ -4,6 +4,15 @@ import styles from './simpleCloseQuestion.module.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheck } from '@fortawesome/free-solid-svg-icons';
 
+/**
+ * @interface SimpleCloseQuestionProps
+ * @description Props for the SimpleCloseQuestion component
+ * @property {string} title - Question title
+ * @property {string} subtitle - Question subtitle
+ * @property {number} questionNumber - Question number in sequence
+ * @property {Option[]} optionsAnswer - Available answer options
+ * @property {Function} onAnswerChange - Callback for answer changes
+ */
 interface SimpleCloseQuestionProps {
   title: string;
   subtitle: string;
@@ -16,6 +25,13 @@ interface Option {
   idAlternative: string;
   text: string;
 }
+
+/**
+ * @component SimpleCloseQuestion
+ * @description Renders a single-choice question with radio button options
+ * @param {SimpleCloseQuestionProps} props - Component props
+ * @returns {JSX.Element} Rendered simple close question component
+ */
 const SimpleCloseQuestion = ({ title, subtitle, questionNumber, optionsAnswer, onAnswerChange }: SimpleCloseQuestionProps) => {
   const [selectedOption, setSelectedOption] = useState<string | null>(null); 
 

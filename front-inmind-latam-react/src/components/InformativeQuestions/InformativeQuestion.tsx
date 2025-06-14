@@ -1,17 +1,23 @@
+import parse from 'html-react-parser';
 
 interface InformativeQuestionProps {
   greeting: string;
   normalInformation: string;
   boldInformation: string;
+  questionCode?: string;
 }
 
-const InformativeQuestion = ({ greeting, normalInformation, boldInformation }: InformativeQuestionProps) => {
+const InformativeQuestion = ({ greeting, normalInformation, boldInformation, questionCode }: InformativeQuestionProps) => {
   return (
     <>
-    <p><strong>{greeting}</strong>&nbsp;{normalInformation}
-    </p>
-    <p><strong><i>{boldInformation}</i></strong>
-    </p>
+      <p>{parse(normalInformation)}</p>
+      <p>
+        {questionCode === "P00214" ? (
+          <i>{parse(boldInformation)}</i>
+        ) : (
+          <strong><i>{parse(boldInformation)}</i></strong>
+        )}
+      </p>
     </>
   );
 };
