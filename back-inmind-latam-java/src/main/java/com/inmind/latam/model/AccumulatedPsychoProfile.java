@@ -6,37 +6,48 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.NoArgsConstructor;
+import lombok.AllArgsConstructor;
 
+/**
+ * Entity class representing accumulated psycho profile information.
+ * <p>
+ * This class maps to the 't_acumulado_psico_perfil' table in the database and contains
+ * information about accumulated psycho profiles including:
+ * - Profile identifier
+ * - Psychologist identifier
+ * - Questionnaire response information
+ * - Review and selection status
+ * - Timestamps
+ * 
+ * @author InMind Latam
+ * @version 1.0
+ * @since 1.0
+ */
 @Entity
-@Table (name = "t_acumulado_psico_perfil")
+@Table(name = "t_accumulated_psycho_profile")
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class AccumulatedPsychoProfile {
 	
-	public AccumulatedPsychoProfile() {
-		super();
-	}
-	
-	public AccumulatedPsychoProfile(String idProfile, String idQuestionnaireAnswered) {
-		super();
-		this.idProfile = idProfile;
-		this.idQuestionnaireAnswered = idQuestionnaireAnswered;
-	 	this.createdAt = LocalDateTime.now(); 
-	    this.isReview = true;
-	}
-
 	@Id
-	@Column(name = "id_acumulado_psico_perfil")
+	@Column(name = "id_accumulated_psycho_profile")
 	private int idAccumulatedPsychoProfile;
 	
-	@Column(name = "id_perfil")
+	@Column(name = "id_profile")
 	private String idProfile;
 	
-	@Column(name = "id_psicologo")
+	@Column(name = "id_psychologist")
 	private String idPsychologist;
 	
-	@Column(name = "id_cuestionario_respondido")
+	@Column(name = "id_questionnaire_answered")
 	private String idQuestionnaireAnswered;
 	
-	@Column(name = "puntaje_final")
+	@Column(name = "final_score")
 	private int finalPoint;
 	
 	@Column(name = "created_at")
@@ -47,69 +58,28 @@ public class AccumulatedPsychoProfile {
 	
 	@Column(name = "is_review")
 	private boolean isReview;
-
-	public int getIdAccumulatedPsychoProfile() {
-		return idAccumulatedPsychoProfile;
-	}
-
-	public void setIdAccumulatedPsychoProfile(int idAccumulatedPsychoProfile) {
-		this.idAccumulatedPsychoProfile = idAccumulatedPsychoProfile;
-	}
-
-	public String getIdProfile() {
-		return idProfile;
-	}
-
-	public void setIdProfile(String idProfile) {
+	
+	@Column(name = "questionnaire_answered")
+	private String questionnaireAnswered;
+	
+	@Column(name = "is_select_psychology")
+	private boolean isSelectPsychology;
+	
+	@Column(name = "is_finish")
+	private boolean isFinish;
+	
+	/**
+	 * Constructs a new AccumulatedPsychoProfile with initial values.
+	 * 
+	 * @param idProfile The profile identifier
+	 * @param idQuestionnaireAnswered The questionnaire response identifier
+	 */
+	public AccumulatedPsychoProfile(String idProfile, String idQuestionnaireAnswered) {
 		this.idProfile = idProfile;
-	}
-
-	public String getIdPsychologist() {
-		return idPsychologist;
-	}
-
-	public void setIdPsychologist(String idPsychologist) {
-		this.idPsychologist = idPsychologist;
-	}
-
-	public String getIdQuestionnaireAnswered() {
-		return idQuestionnaireAnswered;
-	}
-
-	public void setIdQuestionnaireAnswered(String idQuestionnaireAnswered) {
 		this.idQuestionnaireAnswered = idQuestionnaireAnswered;
+		this.createdAt = LocalDateTime.now();
+		this.isReview = false;
+		this.isSelectPsychology = false;
+		this.isFinish = false;
 	}
-
-	public int getFinalPoint() {
-		return finalPoint;
-	}
-
-	public void setFinalPoint(int finalPoint) {
-		this.finalPoint = finalPoint;
-	}
-
-	public LocalDateTime getCreatedAt() {
-		return createdAt;
-	}
-
-	public void setCreatedAt(LocalDateTime createdAt) {
-		this.createdAt = createdAt;
-	}
-
-	public LocalDateTime getUpdatedAt() {
-		return updatedAt;
-	}
-
-	public void setUpdatedAt(LocalDateTime updatedAt) {
-		this.updatedAt = updatedAt;
-	}
-
-	public boolean isReview() {
-		return isReview;
-	}
-
-	public void setReview(boolean isReview) {
-		this.isReview = isReview;
-	}
-
 }

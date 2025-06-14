@@ -1,31 +1,37 @@
+version: "3.8"
+
 services:
   app:
     image: back-inmind-latam:latest
     build:
       context: .
       dockerfile: Dockerfile
+    env_file:
+      - .env
     environment:
       SPRING_APP_NAME: ${SPRING_APP_NAME}
-      SPRING_DATASOURCE_URL: ${DB_URL}  # Elimina si no vas a usar base de datos
-      SPRING_DATASOURCE_USERNAME: ${DB_USERNAME}  # Elimina si no vas a usar base de datos
-      SPRING_DATASOURCE_PASSWORD: ${DB_PASSWORD}  # Elimina si no vas a usar base de datos
-      SPRING_JPA_HIBERNATE_DDL_AUTO: ${DDL_AUTO}  # Elimina si no vas a usar base de datos
+      SPRING_DATASOURCE_URL: ${SPRING_DATASOURCE_URL}
+      SPRING_DATASOURCE_USERNAME: ${SPRING_DATASOURCE_USERNAME}
+      SPRING_DATASOURCE_PASSWORD: ${SPRING_DATASOURCE_PASSWORD}
+      SPRING_JPA_HIBERNATE_DDL_AUTO: ${SPRING_JPA_HIBERNATE_DDL_AUTO}
+      SPRING_REDIS_HOST: ${SPRING_REDIS_HOST}
+      SPRING_REDIS_PORT: ${SPRING_REDIS_PORT}
+      CACHE_TTL_MINUTES: ${CACHE_TTL_MINUTES}
       SERVER_PORT: ${SERVER_PORT}
-      SPRING_REDIS_HOST: ${REDIS_HOST}
-      SPRING_REDIS_PORT: ${REDIS_PORT}
+      REDIRECT_LINK: ${REDIRECT_LINK}
     ports:
       - "${SERVER_PORT}:${SERVER_PORT}"
     depends_on:
-      - redis-server  # Solo necesitas el servicio redis
+      - redis-server
     networks:
-      - app_network  # Definir la red para la conectividad entre contenedores
+      - app_network
 
   redis-server:
     image: redis/redis-stack-server:latest
     ports:
       - "6379:6379"
     networks:
-      - app_network  # Aseguramos que Redis esté en la misma red que la app
+      - app_network
 
 networks:
   app_network:

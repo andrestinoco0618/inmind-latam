@@ -6,70 +6,44 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
+/**
+ * Entity class representing an alternative in the system.
+ * <p>
+ * This class maps to the 'talternativa' table in the database and contains
+ * information about alternatives including:
+ * - Unique identifier
+ * - Alternative text
+ * - Alternative type
+ * - Title
+ * - Associated question
+ * 
+ * @author InMind Latam
+ * @version 1.0
+ * @since 1.0
+ */
 @Entity
-@Table (name = "talternativa")
+@Table(name = "t_alternative")
+@Data
+@NoArgsConstructor
 public class Alternative {
 	
-	public Alternative() {
-		super();
-	}
-
 	@Id
-	@Column(name = "ID_Alternativa")
+	@Column(name = "id_alternative")
 	private String idAlternative;
 	
-	@Column(name = "texto_alternativa")
+	@Column(name = "alternative_text")
 	private String textAlternative;
 	
-	@Column(name = "tipo_alternativa")
+	@Column(name = "alternative_type")
 	private String alternativeType;
 	
-	@Column(name = "titulo")
+	@Column(name = "qualification")
 	private String title;
 	
 	@ManyToOne
-    @JoinColumn(name = "ID_Pregunta", referencedColumnName = "ID_Pregunta", insertable = false, updatable = false)
+    @JoinColumn(name = "id_question", referencedColumnName = "id_question", insertable = false, updatable = false)
     private Question question;
-
-	public String getIdAlternative() {
-		return idAlternative;
-	}
-
-	public void setIdAlternative(String idAlternative) {
-		this.idAlternative = idAlternative;
-	}
-
-	public String getTextAlternative() {
-		return textAlternative;
-	}
-
-	public void setTextAlternative(String textAlternative) {
-		this.textAlternative = textAlternative;
-	}
-
-	public String getAlternativeType() {
-		return alternativeType;
-	}
-
-	public void setAlternativeType(String alternativeType) {
-		this.alternativeType = alternativeType;
-	}
-
-	public String getTitle() {
-		return title;
-	}
-
-	public void setTitle(String title) {
-		this.title = title;
-	}
-
-	public Question getQuestion() {
-		return question;
-	}
-
-	public void setQuestion(Question question) {
-		this.question = question;
-	}
-	
 }
