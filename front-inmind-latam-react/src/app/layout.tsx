@@ -1,0 +1,30 @@
+import type { Metadata } from "next";
+import { Inter } from "next/font/google";
+import Header from '@/components/Header/header';
+import dynamic from 'next/dynamic';
+import "@/styles/globals.css"; 
+
+const inter = Inter({ subsets: ["latin"] });
+
+export const metadata: Metadata = {
+  title: "Formulario para Mi - InMind Latam",
+  description: "InMind Latam",
+};
+
+export default function RootLayout({
+  children,
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
+  return (
+    <html lang="en">
+      <body className={inter.className}>
+        <Header>
+        </Header>
+        <main>
+        {children}
+        </main>
+        </body>
+    </html>
+  );
+}
